@@ -364,6 +364,8 @@ public class Primary {
             //Socket sock1 = new Socket("talk.google.com",5222);
             System.out.println(sock1.toString());
 
+            byte[] inBuffer = new byte[2000];
+
 
             PrintWriter pw = new PrintWriter(sock1.getOutputStream(),true);
 
@@ -376,29 +378,66 @@ public class Primary {
 
             //to_server = sock1.getOutputStream();
 
-            //String Stream =  "<stream:stream\n"+"xmlns:stream=\"http://etherx.jabber.org/streams\"\n" +"version=\"1.0\" xmlns=\"jabber:client\" to=\"chat.facebook.com\"\n"
+            //String stream =  "<stream:stream\n"+"xmlns:stream=\"http://etherx.jabber.org/streams\"\n" +"version=\"1.0\" xmlns=\"jabber:client\" to=\"chat.facebook.com\"\n"
               //      +"xml:lang=\"en\" xmlns:xml=\"http://www.w3.org/XML/1998/namespace\"/>";
 
-            String Stream = "<stream:stream xmlns:stream=\"http://etherx.jabber.org/streams\" from=\"tarang.s@directi.com\" xmlns=\"jabber:client\" to=\"directi.com\" version=\"1.0\">";
+            String stream = "<stream:stream xmlns:stream=\"http://etherx.jabber.org/streams\" from=\"tarang.s@directi.com\" xmlns=\"jabber:client\" to=\"directi.com\" version=\"1.0\">";
 
 
 
-            System.out.println(Stream);
-            pw.println(Stream);
+            pw.println(stream);
+            System.out.println(stream);
 
-            String I = d.readLine();
-
+            input.read(inBuffer);
+            String I = new String(inBuffer);
             System.out.println(I);
 
-            String D =  "<auth xmlns=\"urn:ietf:params:xml:ns:xmpp-sasl\" mechanism=\"PLAIN\">=</auth>";
+            input.read(inBuffer);
+            String J = new String(inBuffer);
+            System.out.println(J);
+            System.out.print("\n\n\n\n");
+
+            String uid = '\0'+"tarang.s"+'\0'+"wrongpwd"; //Put ur password n jid;
+            String Hash = new String(Base64.encode(uid.getBytes()));
+
+            String D =  "<auth xmlns=\"urn:ietf:params:xml:ns:xmpp-sasl\" mechanism=\"PLAIN\">"+Hash+"</auth>";
 
             System.out.println(D);
             pw.println(D);
 
-            I = d.readLine();
+            input.read(inBuffer);
+            J = new String(inBuffer);
+            System.out.println(J);
+            System.out.print("\n\n\n\n");
 
-            System.out.println(I);
+            D =  "<iq type=\"set\" id=\"tn281v37\"><bind xmlns=\"urn:ietf:params:xml:ns:xmpp-bind\"/></iq>";
 
+            System.out.println(D);
+            pw.println(D);
+
+            input.read(inBuffer);
+            J = new String(inBuffer);
+            System.out.println(J);
+            System.out.print("\n\n\n\n");
+
+            D =  "<iq id=\"sess_1\" to=\"directi.com\" type=\"set\"><session xmlns=\"urn:ietf:params:xml:ns:xmpp-session\"/></iq>";
+
+            System.out.println(D);
+            pw.println(D);
+
+            input.read(inBuffer);
+            J = new String(inBuffer);
+            System.out.println(J);
+            System.out.print("\n\n\n\n");
+
+            D =  "<message to=\'pawan.m@directi.com\'>\n" + "<body>Hello</body>\n" + "</message>";
+            System.out.println(D);
+            pw.println(D);
+
+            input.read(inBuffer);
+            J = new String(inBuffer);
+            System.out.println(J);
+            System.out.print("\n\n\n\n");
 
 
 
