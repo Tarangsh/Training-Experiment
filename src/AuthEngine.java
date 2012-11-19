@@ -1,9 +1,9 @@
-import org.w3c.dom.Document;
-import org.xml.sax.InputSource;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.util.HashMap;
 
 /**
@@ -55,7 +55,7 @@ public class AuthEngine {
 
 
 
-        XmlDoc auth = new XmlDoc("auth",authAttributes,Hash+System.getProperty("line.separator"));
+        XmlDoc auth = new XmlDoc("auth",authAttributes,Hash);
         return(auth.getDocument());
     }
 
@@ -149,8 +149,8 @@ public class AuthEngine {
                     break;
             }
 
-            InputSource is = new InputSource(new StringReader(Buff));
-            Document doc = builder.parse(is);
+            //InputSource is = new InputSource(new StringReader(Buff));
+            //Document doc = builder.parse(is);
 
             toSrv = getAuthTag(JID,password,"PLAIN");
             pwOutStream.println(toSrv);
