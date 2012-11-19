@@ -1,4 +1,3 @@
-import com.sun.corba.se.spi.orbutil.fsm.Input;
 import com.sun.xml.internal.messaging.saaj.util.Base64;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
@@ -12,7 +11,6 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.*;
-import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.Socket;
 
@@ -452,22 +450,24 @@ public class Primary {
     public static void main(String[] args)
     {
         try{
-
+            System.out.print("Start!!");
             Primary P = new Primary();
             //P.XMPPConnect();
-           // Socket sock1 = new Socket("talk.google.com",5222);
-           // Socket sock1 = new Socket("10.10.1.31",5222);
+            //Socket sock1 = new Socket("talk.google.com",5222);
+            Socket sock1 = new Socket("10.10.1.31",5222);
 
-            // Socket sock1 = P.getSSlSock("talk.google.com",443);
+             //Socket sock1 = P.getSSlSock("talk.google.com",5223);
 
           //  P.facebookAuth();
 
 
             //Base64.encodeBytes(authString.getBytes())
-
-            P.pingpongAuth();         /*
+            AuthEngine AUTH = AuthEngine.getInstance();
+            AUTH.pingpongAuth(sock1.getInputStream(),sock1.getOutputStream(),"tarang.s@directi.com","zP^Jxnx0");
+            //AUTH.gtalkAuth(sock1.getInputStream(),sock1.getOutputStream(),"cadet.tarang@gmail.com","Schamuda09");
+            //P.pingpongAuth();
             //Socket sock1 = new Socket("chat.facebook.com",5222);
-            System.out.println(sock1.toString());
+            /*System.out.println(sock1.toString());
 
 
             DataInputStream input = new DataInputStream(sock1.getInputStream());
