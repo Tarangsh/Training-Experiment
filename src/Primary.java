@@ -463,8 +463,8 @@ public class Primary {
 
             //Base64.encodeBytes(authString.getBytes())
             AuthEngine AUTH = AuthEngine.getInstance();
-            AUTH.pingpongAuth(sock1.getInputStream(),sock1.getOutputStream(),"tarang.s@directi.com","zP^Jxnx0");
-            //AUTH.gtalkAuth(sock1.getInputStream(),sock1.getOutputStream(),"cadet.tarang@gmail.com","Schamuda09");
+            AUTH.pingpongAuth(sock1.getInputStream(),sock1.getOutputStream(),"tarang.s@directi.com","");
+            //AUTH.gtalkAuth(sock1.getInputStream(),sock1.getOutputStream(),"cadet.tarang@gmail.com","");
             //P.pingpongAuth();
             //Socket sock1 = new Socket("chat.facebook.com",5222);
             /*System.out.println(sock1.toString());
